@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
 
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo-app"><img src="img/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+        <div class="navigation">
+            <ul class="secciones">
+                <li><a href="/landing.html" class="header-link">Inicio</a></li>
+                <li><a href="/nosotros.html" class="header-link">Sobre Nosotros</a></li>
+                <li><a href="/contacto.html" class="header-link">Contacto</a></li>
+            </ul>
+    </header>
+
+    <main>
+        <div class="login-page">
+            <div class="login-img">
+            </div>
+            <div class="d-login">
+                    <div>
+                    <a href="registro.html" class="t-registrate">Regístrate</a>
+                    <div class="linea"></div>
+                    <a href="login.html" class="t-ingresa">Ingresa</a>
+                    </div>
+                    
+                    <form class="login-reg">
+                        <label id="l-email" for="email">Correo electrónico</label>
+                        <br>
+                        <input type="text" id="i-email">
+                        <br>
+                        <br>
+                        <label id="l-contra" for="contra">Contraseña</label>
+                        <br>
+                        <input type="password" id="i-contra">
+                        <br>
+                        <br>
+                        <br>
+                        <button type="submit" id="btn-Ingresar">Ingresar</button>
+                    </form>
+                
+            </div>
+
+        </div>
+    </main>
 </body>
 </html>

@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Inicio</title>
 </head>
-<body>
 
+<body>
+    <header>
+        <h1 class="logo-app">CalWallet</h1>
+        <div class="navigation">
+            <ul class="secciones">
+                <li><a href="#" class="header-link">Inicio</a></li>
+                <li><a href="#" class="header-link">Sobre Nosotros</a></li>
+                <li><a href="#" class="header-link">Contacto</a></li>
+            </ul>
+    </header>
+
+    <main>
+        <div class="c-main-config">
+                <div class="p-config-izq">
+                    <ul class="config-list">
+                        <br>
+                        <br>
+                        <li><i class="material-icons" style="color: white;">&#xe8b8;</i><a href="/config.html" class="config-link"> Configuracion</a></li>
+                        <br>
+                        <br>
+                        <li><i class="material-icons" style="color: white;">&#xe02f;</i><a href="/facturas.html" class="config-link"> Registros</a></li>
+                        <br>
+                        <br>
+                        <li><i class="material-icons" style="color: white;">&#xe02e;</i><a href="/tcea.html" class="config-link"> TCEA</a></li>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></br>
+                        <li><i class="material-icons" style="color: white;">&#xe879;</i><a href="#" class="config-link"> Cerrar Sesion</a></li>
+                        </ul>
+                </div>
+
+                <div class="p-config-der">
+                    <div class="d-reg">
+                        <h1>Calcular la TCEA</h1>
+                        <br>
+                        <br>
+                            <div class="help1">
+                                <div class="help2">
+                                    <label id="l-tea" for="tea">TEA</label>
+                                    <br>
+                                    <br>
+                                    <input type="text" id="i-tea" >
+                                    <br>
+                                </div>
+                                <div class="help3">
+                                    <label id="l-seguro" for="seguro">Seguro de desgravamen</label>
+                                    <br>
+                                    <br>
+                                    <input type="text" id="i-seguro" >
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="help1">
+                                <div class="help2">
+                                    <label id="l-ncuotas" for="ncuotas">No. Cuotas</label>
+                                    <br> 
+                                    <br>
+                                    <input type="text" id="i-ncuotas" placeholder="  S/.">
+                                    <br>
+                                </div>
+                                <div class="help3">
+                                    <label id="l-descuento" for="descuento">Dsctos.</label>
+                                    <br>
+                                    <br>
+                                    <input type="text" id="i-descuento" placeholder="  S/.">
+                                    <br>
+
+                                </div>
+                            </div>
+
+                                <label id="l-cargos" for="cargos">Otros cargos</label>
+                                <br>
+                                <br>
+                                 <input type="text" id="i-cargos" placeholder="  S/.">
+                           
+                                </br>
+                        <button type="submit" id="btn-registro">Calcular</button>
+
+                    </div>
+                </div>
+        </div>                
+    </main>
 </body>
-</html>
