@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/styles/main.css}">
+</head>
+
+<body>
+    <header>
+        
+        <h1 class="logo-app"><img src="https://i.postimg.cc/QCnYtG2b/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+        <div class="navigation">
+            <ul class="secciones">
+                <li><a th:href="@{/home}" class="header-link">Inicio</a></li>
+                <li><a th:href="@{/home/nosotros}" class="header-link">Sobre Nosotros</a></li>
+                <li><a th:href="@{/home/contacto}" class="header-link">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="reg-page">
+            <div class="reg-img">
+            </div>
+            <div class="d-regg">
+                <section>
+                    <a class="t-registrateg">Regístrate</a>
+                    <div class="linea"></div>
+                    <a th:href="@{/login}" class="t-ingresag">Ingresa</a>
+                </section>
+                <form class="registro-cont" th:action="@{/register/registrar}" method="post" th:object="${usuario}">
+					<label id="l-username" for="username">Username</label><br/>
+					<input type="text" id="i-username" th:field="*{Username}" required>
+					<br>
+					<br>
+					<label id="l-rucu" for="ruc">RUC</label>
+					<br>
+                    <input type="text" id="i-rucu" maxlength="11" th:field="*{RUC}" required>
+                    <br>
+                    <br>
+					<label id="l-email" for="email">Correo electrónico</label><br/>
+					<input type="text" id="i-email" th:field="*{Email}" required>
+                    <br>
+                    <br>                    
+                    <div class="help1">
+                        <div class="help2">
+                        	<label id="l-tipoMoneda" for="tipoMoneda">Tipo de Moneda</label><br/>
+							<select id="i-tipoMoneda" name="tipoMoneda" th:field="*{Tipo_Moneda}">
+	    						<option value="Soles">Soles</option>
+	    						<option value="Dolares">Dolares</option>
+    						</select>
+                        </div>
+                        <div class="help3">
+                        	<label id="l-tipoTasa" for="tipoTasa">Tipo de Tasa</label><br/>
+							<select id="i-tipoTasa" name="tipoTasa" th:field="*{TipoTasa}">
+	    						<option value="Efectiva">Efectiva</option>
+	    						<option value="Nominal">Nominal</option>
+    						</select>
+                        </div>
+                    </div>
+                    <br>
+                    <label id="l-tasaInteres" for="contra">Tasa de Interes</label><br/>
+					<input type="number" id="i-tasaInteres" th:field="*{TasaInteres}" required>
+					<label>%</label>
+					<br>
+					<br>
+					<label id="l-contra" for="contra">Contraseña</label><br/>
+					<input type="password" id="i-contra" th:field="*{Contraseña}" required>
+                    <br>
+                    <br>
+                    <button type="submit" id="btn-registro">Registrar</button>
+                </form>
+                <br>
+                <h3 th:if="${mensaje != null}" th:text="${mensaje}"></h3>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -7,24 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import pe.edu.upc.spring.model.Factura;
 import pe.edu.upc.spring.repository.IFacturaRepository;
 import pe.edu.upc.spring.service.IFacturaService;
 
 @Service
-public class FacturaServiceImpl implements IFacturaService{
+public class FacturaServiceImpl implements IFacturaService {
+	
 	@Autowired
 	private IFacturaRepository dFactura;
 	
 	@Override
 	@Transactional
-	public boolean guardar(Factura factura) {
+	public boolean grabar(Factura factura) {
 		Factura objFactura= dFactura.save(factura);
 		if (objFactura == null)
 			return false;
 		else
 			return true;
+	}
+	
+	@Override
+	@Transactional
+	public void eliminar(int idFactura) {
+		dFactura.deleteById(idFactura);		
 	}
 	
 	@Override
@@ -39,7 +45,11 @@ public class FacturaServiceImpl implements IFacturaService{
 		return dFactura.findAll();
 	}
 	
-	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Factura> BuscarFacturasConUsuarioId(int idUsuario) {
+		return dFactura.BuscarFacturasConUsuarioId(idUsuario);
+	}
 	
 	
 }

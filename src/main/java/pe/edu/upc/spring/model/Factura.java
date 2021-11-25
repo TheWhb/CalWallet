@@ -1,9 +1,10 @@
-package pe.edu.upc.spring.model;
+	package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,19 +20,19 @@ public class Factura implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int factura_id;
+	private int idFactura;
 	
-	@Column(name = "sub_total",nullable = false)
-	private double sub_total;
+	@Column(name = "Sub_total",nullable = false)
+	private double Sub_total;
 	
-	@Column(name = "anticipos",nullable = false)
-	private double anticipos;
+	@Column(name = "Anticipos",nullable = false)
+	private double Anticipos;
 	
-	@Column(name = "descuentos",nullable = false)
-	private double descuentos;
+	@Column(name = "Descuentos",nullable = false)
+	private double Descuentos;
 	
-	@Column(name = "valor_venta",nullable = false)
-	private double valor_venta;
+	@Column(name = "Valor_venta",nullable = false)
+	private double Valor_venta;
 	
 	@Column(name = "ISC",nullable = false)
 	private double ISC;
@@ -39,78 +40,90 @@ public class Factura implements Serializable{
 	@Column(name = "IGV",nullable = false)
 	private double IGV;
 	
-	@Column(name = "otro_cargo",nullable = false)
-	private double otro_cargo;
+	@Column(name = "Otro_cargo",nullable = false)
+	private double Otro_cargo;
 	
-	@Column(name = "otro_tributo",nullable = false)
-	private double otro_tributo;
+	@Column(name = "Otro_tributo",nullable = false)
+	private double Otro_tributo;
 	
-	@Column(name = "importe_total",nullable = false)
-	private double importe_total;
+	@Column(name = "Importe_total",nullable = false)
+	private double Importe_total;
 	
-	@ManyToOne
+	@Column(name = "Periodo",nullable = false)
+	private int Periodo;
+	
+	@Column(name = "AlDescuento",nullable = false)
+	private double AlDescuento;
+	
+	@Column(name="FTCEA", length=10, nullable=false)
+	private double FTCEA;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuario", nullable = false)
 	private Usuario usuario;
 
 	public Factura() {
 		super();
-		
 	}
 
-	public Factura(int factura_id, double sub_total, double anticipos, double descuentos, double valor_venta,
-			double iSC, double iGV, double otro_cargo, double otro_tributo, double importe_total, Usuario usuario) {
+	public Factura(int idFactura, double sub_total, double anticipos, double descuentos, double valor_venta, double iSC,
+			double iGV, double otro_cargo, double otro_tributo, double importe_total, int periodo, double alDescuento,
+			double fTCEA, Usuario usuario) {
 		super();
-		this.factura_id = factura_id;
-		this.sub_total = sub_total;
-		this.anticipos = anticipos;
-		this.descuentos = descuentos;
-		this.valor_venta = valor_venta;
+		this.idFactura = idFactura;
+		Sub_total = sub_total;
+		Anticipos = anticipos;
+		Descuentos = descuentos;
+		Valor_venta = valor_venta;
 		ISC = iSC;
 		IGV = iGV;
-		this.otro_cargo = otro_cargo;
-		this.otro_tributo = otro_tributo;
-		this.importe_total = importe_total;
+		Otro_cargo = otro_cargo;
+		Otro_tributo = otro_tributo;
+		Importe_total = importe_total;
+		Periodo = periodo;
+		AlDescuento = alDescuento;
+		FTCEA = fTCEA;
 		this.usuario = usuario;
 	}
 
-	public int getFactura_id() {
-		return factura_id;
+	public int getIdFactura() {
+		return idFactura;
 	}
 
-	public void setFactura_id(int factura_id) {
-		this.factura_id = factura_id;
+	public void setIdFactura(int idFactura) {
+		this.idFactura = idFactura;
 	}
 
 	public double getSub_total() {
-		return sub_total;
+		return Sub_total;
 	}
 
 	public void setSub_total(double sub_total) {
-		this.sub_total = sub_total;
+		Sub_total = sub_total;
 	}
 
 	public double getAnticipos() {
-		return anticipos;
+		return Anticipos;
 	}
 
 	public void setAnticipos(double anticipos) {
-		this.anticipos = anticipos;
+		Anticipos = anticipos;
 	}
 
 	public double getDescuentos() {
-		return descuentos;
+		return Descuentos;
 	}
 
 	public void setDescuentos(double descuentos) {
-		this.descuentos = descuentos;
+		Descuentos = descuentos;
 	}
 
 	public double getValor_venta() {
-		return valor_venta;
+		return Valor_venta;
 	}
 
 	public void setValor_venta(double valor_venta) {
-		this.valor_venta = valor_venta;
+		Valor_venta = valor_venta;
 	}
 
 	public double getISC() {
@@ -130,27 +143,27 @@ public class Factura implements Serializable{
 	}
 
 	public double getOtro_cargo() {
-		return otro_cargo;
+		return Otro_cargo;
 	}
 
 	public void setOtro_cargo(double otro_cargo) {
-		this.otro_cargo = otro_cargo;
+		Otro_cargo = otro_cargo;
 	}
 
 	public double getOtro_tributo() {
-		return otro_tributo;
+		return Otro_tributo;
 	}
 
 	public void setOtro_tributo(double otro_tributo) {
-		this.otro_tributo = otro_tributo;
+		Otro_tributo = otro_tributo;
 	}
 
 	public double getImporte_total() {
-		return importe_total;
+		return Importe_total;
 	}
 
 	public void setImporte_total(double importe_total) {
-		this.importe_total = importe_total;
+		Importe_total = importe_total;
 	}
 
 	public Usuario getUsuario() {
@@ -160,7 +173,28 @@ public class Factura implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
+
+	public int getPeriodo() {
+		return Periodo;
+	}
+
+	public void setPeriodo(int periodo) {
+		Periodo = periodo;
+	}
+
+	public double getAlDescuento() {
+		return AlDescuento;
+	}
+
+	public void setAlDescuento(double alDescuento) {
+		AlDescuento = alDescuento;
+	}
+
+	public double getFTCEA() {
+		return FTCEA;
+	}
+
+	public void setFTCEA(double fTCEA) {
+		FTCEA = fTCEA;
+	}
 }

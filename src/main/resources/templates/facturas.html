@@ -1,143 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>Inicio</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" th:href="@{/styles/main.css}">
+<title>Inicio</title>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+    	function sub() {
+            var txtFirstNo = document.getElementById('i-direccion').value;
+            var result = parseFloat(txtFirstNo)*0.18;
+    	    if (!isNaN(result)) {
+	            document.getElementById('i-igv').value = result;
+        	}
+            var txtSecondNo = document.getElementById('i-anticipos').value;
+            var txtThirdNo = document.getElementById('i-subtotal').value;
+            result = parseFloat(txtFirstNo) - (parseFloat(txtSecondNo) + parseFloat(txtThirdNo));
+            if (!isNaN(result)) {
+                document.getElementById('i-senior').value = result;
+            }
+            txtFirstNo = document.getElementById('i-senior').value;
+            txtSecondNo = document.getElementById('i-isc').value;
+            txtThirdNo = document.getElementById('i-igv').value;
+            var txtFourthNo = document.getElementById('i-cargos').value;
+            var txtFifthNo = document.getElementById('i-tributos').value;
+            result = parseFloat(txtFirstNo) + parseFloat(txtSecondNo) + parseFloat(txtThirdNo) + parseFloat(txtFourthNo) + parseFloat(txtFifthNo);
+            if (!isNaN(result)) {
+                document.getElementById('i-total').value = result;
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <header>
-        <h1 class="logo-app"><img src="img/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
-        <div class="navigation">
-            <ul class="secciones">
-                <li><a href="/landing.html" class="header-link">Inicio</a></li>
-                <li><a href="#" class="header-link">Sobre Nosotros</a></li>
-                <li><a href="#" class="header-link">Contacto</a></li>
-            </ul>
-    </header>
+	<header>
+		<h1 class="logo-app"><img src="https://i.postimg.cc/QCnYtG2b/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+		<div class="navigation">
+			<ul class="secciones">
+				<li><a th:href="@{/home}" class="header-link">Inicio</a></li>
+				<li><a th:href="@{/home/nosotros}" class="header-link">Sobre Nosotros</a></li>
+				<li><a th:href="@{/home/contacto}" class="header-link">Contacto</a></li>
+			</ul>
+		</div>	
+	</header>
 
-    <main>
-        <div class="c-main-config">
-                <div class="p-config-izq">
-                    <ul class="config-list">
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe8b8;</i><a href="/config.html" class="config-link"> Configuracion</a></li>
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe02f;</i><a href="/facturas.html" class="config-link"> Registros</a></li>
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe02e;</i><a href="/tcea.html" class="config-link"> TCEA</a></li>
-                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></br>
+	<main>
+		<div class="c-main-config">
+			<div class="p-config-izq">
+				<h1 style="color: white;" th:text="${UsernameHola}"></h1>
+				<ul class="config-list">
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8d3;</i><a
+						th:href="@{/inicio}" class="config-link"> Inicio</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe03b;</i><a
+						th:href="@{/inicio/listarFacturas}" class="config-link"> Listas</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe02f;</i><a
+						th:href="@{/inicio/registrarFactura}" class="config-link"> Registros</a></li>
+					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8b8;</i><a 
+						th:href="@{/inicio/configuracion}" class="config-link"> Configuración</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe879;</i><a 
+						th:href="@{/inicio/cerrarSesion}" class="config-link"> Cerrar Sesión</a></li>
+				</ul>
+			</div>
 
-                        <li><i class="material-icons" style="color: white;">&#xe879;</i><a href="#" class="config-link"> Cerrar Sesion</a></li>
-                        </ul>
-                </div>
+			<div class="p-config-der">
+				<div class="b-datos">
+					<a th:href="@{/inicio/registrarFactura}" id="btn-facturas">Facturas</a>
+					<a th:href="@{/inicio/registrarLetra}" id="btn-letras">Letras</a>
+					<a th:href="@{/inicio/registrarRecibo}" id="btn-recibo">Recibo por honorarios</a> 
+				</div>
+				<div class="c-factura">
+					<form class="registro-cont" th:action="@{/inicio/crearFactura}" method="post" th:object="${factura}">
+						<h5 class="h9-l">Factura</h5>
+						<br>
+						<div class="row row-space">
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-direccion" for="direccion">Valor de Venta</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-direccion" onkeyup="sub()" th:field="*{Valor_venta}" required>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-subtotal" for="subtotal">ISC</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-isc" onkeyup="sub()" th:field="*{ISC}" required>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-igv" for="igv">IGV (18%)</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-igv" onkeyup="sub()" th:field="*{IGV}" required readonly>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row row-space">
+							<div class="col-2">
+								<div class="help1">
+									<div class="help2">
+										<label id="l-anticipos" for="anticipos">Anticipos</label> 
+										<br>
+										<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+										<label th:if="${TipoMoneda != 'Soles'}">$</label>
+										<input type="number" id="i-anticipos" onkeyup="sub()" th:field="*{Anticipos}" required>
+									</div>
+									<div class="help3">
+										<label id="l-subtotal" for="subtotal">Descuento</label> 
+										<br>
+										<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+										<label th:if="${TipoMoneda != 'Soles'}">$</label>
+										<input type="number" id="i-subtotal" onkeyup="sub()" th:field="*{Descuentos}" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-cargos" for="cargos">Otros cargos</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-cargos" onkeyup="sub()" th:field="*{Otro_cargo}" required>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-tributos" for="tributos">Otros tributos</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-tributos" onkeyup="sub()" th:field="*{Otro_tributo}" required>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row row-space">
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-senior" for="senior">Subtotal</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-senior" onkeyup="sub()" th:field="*{Sub_total}" required readonly>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label id="l-total" for="total">Importe Total</label> 
+									<br>
+									<label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+									<label th:if="${TipoMoneda != 'Soles'}">$</label>
+									<input type="number" id="i-total" th:field="*{Importe_total}" required readonly>
+								</div>
+							</div>
+						</div>
+						<br>
+                    	<label id="l-perio" for="perio">Periodo de días</label>
+						<br>
+						<div class="row row-space">
+							<input type="number" id="i-perio" th:field="*{Periodo}" required>
+                    	
+							<button type="submit" id="btn-guardar">Guardar factura</button>
+						</div>
+					</form>
+				</div>
 
-                <div class="p-config-der">
-                    <div class="b-datos">
-                        <a href="/facturas.html"> <button type="submit" id="btn-facturas">Facturas</button></a>
-                        <a href="/letras.html"> <button type="submit" id="btn-letras">Letras</button></a>
-                        <a href="/recibos.html"> <button type="submit" id="btn-recibo">Recibos por honorario</button></a>
-                    </div>
-                    <div class="c-factura">
-                        <h9 class="h9-l">Factura</h9>
-                        <br>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-senior" for="senior">Senor(es)</label>
-                                    <br>
-                                    <input type="text" id="i-senior">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-cargos" for="cargos">Otros cargos</label>
-                                    <br>
-                                    <input type="text" id="i-cargos" placeholder="  S/.">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-tributos" for="tributos">Otros tributos</label>
-                                    <br>
-                                    <input type="text" id="i-tributos" placeholder="  S/.">
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-direccion" for="direccion">Direccion</label>
-                                    <br>
-                                    <input type="text" id="i-direccion">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-total" for="total">IMPORTE TOTAL</label>
-                                    <br>
-                                    <label id="l-moneda"><input type="text" id="i-total" placeholder="  S/."></label>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-fecha" for="date">Fecha</label>
-                                    <br>
-                                    <input type="date" id="i-fecha">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label id="l-ruc" for="ruc">RUC</label>
-                                    <br>
-                                    <input type="text" id="i-ruc" >
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <button type="submit" id="btn-guardar">Guardar factura</button>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="help1">
-                            <div class="help2">
-                                <label id="l-subtotal" for="subtotal">Subtotal</label>
-                                    <br>
-                                <input type="text" id="i-subtotal" placeholder="  S/.">
-                            </div>
-                            <div class="help3">
-                                <label id="l-igv" for="igv">I.G.V. 18 %</label>
-                                    <br>
-                                <input type="text" id="i-igv" placeholder="  S/.">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="help1">
-                            <div class="help2">
-                                <label id="l-subtotal" for="subtotal">ISC</label>
-                                    <br>
-                                <input type="text" id="i-isc" placeholder="  S/.">
-                            </div>
-                            <div class="help3">
-                                <label id="l-anticipos" for="anticipos">Anticipos</label>
-                                    <br>
-                                <input type="text" id="i-anticipos" placeholder="  S/.">
-                            </div>
-                        </div>
-                    </div>
-         
-            </div>
-        </div>                
-    </main>
+			</div>
+		</div>
+	</main>
 </body>
+</html>
