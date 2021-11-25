@@ -1,77 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
     <title>Inicio</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function res() {
+            var txtFirstNo = document.getElementById('i-recibi').value;
+            var txtSecondNo = document.getElementById('i-lasuma').value;
+            var result = parseFloat(txtFirstNo) - parseFloat(txtSecondNo);
+            if (!isNaN(result)) {
+                document.getElementById('i-fecha-r').value = result;
+            }
+        }
+    </script>
 </head>
 
 <body>
     <header>
-        <h1 class="logo-app"><img src="img/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+        <h1 class="logo-app"><img src="https://i.postimg.cc/QCnYtG2b/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
         <div class="navigation">
             <ul class="secciones">
                 <li><a href="#" class="header-link">Inicio</a></li>
                 <li><a href="#" class="header-link">Sobre Nosotros</a></li>
                 <li><a href="#" class="header-link">Contacto</a></li>
             </ul>
+        </div>
     </header>
 
     <main>
         <div class="c-main-config">
-                <div class="p-config-izq">
-                    <ul class="config-list">
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe8b8;</i><a href="/config.html" class="config-link"> Configuracion</a></li>
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe02f;</i><a href="/facturas.html" class="config-link"> Registros</a></li>
-                        <br>
-                        <br>
-                        <li><i class="material-icons" style="color: white;">&#xe02e;</i><a href="/tcea.html" class="config-link"> TCEA</a></li>
-                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></br>
+        	<div class="p-config-izq">
+				<h1 style="color: white;" th:text="${UsernameHola}"></h1>
+				<ul class="config-list">
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8d3;</i><a
+						th:href="@{/inicio}" class="config-link"> Inicio</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe03b;</i><a
+						th:href="@{/inicio/listarFacturas}" class="config-link"> Listas</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe02f;</i><a
+						th:href="@{/inicio/registrarFactura}" class="config-link"> Registros</a></li>
+					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8b8;</i><a 
+						th:href="@{/inicio/configuracion}" class="config-link"> Configuración</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe879;</i><a 
+						th:href="@{/inicio/cerrarSesion}" class="config-link"> Cerrar Sesión</a></li>
+				</ul>
+			</div>
 
-                        <li><i class="material-icons" style="color: white;">&#xe879;</i><a href="#" class="config-link"> Cerrar Sesion</a></li>
-                        </ul>
+            <div class="p-config-der">
+            	<div class="b-datos">
+					<a th:href="@{/inicio/registrarFactura}" id="btn-facturas">Facturas</a>
+					<a th:href="@{/inicio/registrarLetra}" id="btn-letras">Letras</a>
+					<a th:href="@{/inicio/registrarRecibo}" id="btn-recibo">Recibo por honorarios</a> 
+				</div>
+                <div class="c-recibos">
+                <form class="registro-cont" th:action="@{/inicio/crearRecibo}" method="post" th:object="${recibo}">
+                    <h6 class="h9-l">Recibo por honorarios</h6>
+                    <br>
+                    <label id="l-recibi" for="recibi">Total</label>
+                    <br>
+                    <label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+					<label th:if="${TipoMoneda != 'Soles'}">$</label>
+                    <input type="number" id="i-recibi" onkeyup="res()" th:field="*{Total}" required>
+                    <br>
+                    <br>
+                    <label id="l-lasuma" for="lasuma">Retencion</label>
+                    <br>
+                    <label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+					<label th:if="${TipoMoneda != 'Soles'}">$</label>
+                    <input type="number" id="i-lasuma" onkeyup="res()" th:field="*{Retencion}" required>
+                    <br>
+                    <br>
+                    <label id="l-fecha-r" for="date">Total Neto</label>
+                    <br>
+                    <label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+					<label th:if="${TipoMoneda != 'Soles'}">$</label>
+                    <input type="number" id="i-fecha-r" th:field="*{Total_neto}" required readonly>
+                    <br>
+                    <br>
+                    <label id="l-perio" for="perio">Periodo de días</label>
+                    <br>
+                    <input type="number" id="i-perio" th:field="*{Periodo}" required>
+                    <br>
+                    <br>
+                	<button type="submit" id="btn-guardar">Guardar recibo</button>
+                </form>
                 </div>
-
-                <div class="p-config-der">
-                    <div class="b-datos">
-                        <a href="/facturas.html"> <button type="submit" id="btn-facturas">Facturas</button></a>
-                        <a href="/letras.html"> <button type="submit" id="btn-letras">Letras</button></a>
-                        <a href="/recibos.html"> <button type="submit" id="btn-recibo">Recibos por honorario</button></a>
-                    </div>
-                    <div class="c-recibos">
-
-                        <h9 class="h9-l">Recibo por honorarios</h9>
-                        <br>
-                        <br>
-                        <label id="l-recibi" for="recibi">Recibi de:</label>
-                        <br>
-                        <br>
-                        <input type="text" id="i-recibi">
-                        <br>
-                        <br>
-                        <label id="l-lasuma" for="lasuma">LA SUMA DE: </label>
-                        <br>
-                        <br>
-                        <label><input type="text" id="i-lasuma" placeholder="  S/."></label>
-                        <br>
-                        <br>
-                        <label id="l-fecha-r" for="date">Fecha</label>
-                        <br>
-                        <br>
-                        <input type="date" id="i-fecha-r">
-                        <br>
-                        <br>
-                        <button type="submit" id="btn-guardar">Guardar recibo</button>
-                    </div>
-                </div>
+            </div>
         </div>                
     </main>
 </body>
+</html>

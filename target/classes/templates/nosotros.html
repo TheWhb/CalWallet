@@ -1,125 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
-    <link rel="stylesheet" href="/styles/main.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
+<link rel="stylesheet" th:href="@{/styles/main.css}">
 
-    <title>Inicio</title>
+<title>Inicio</title>
 
-  </head>
+</head>
 
 <body>
-    <header>
-        <h1 class="logo-app"><img src="img/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
-        <div class="navigation">
-            <ul class="secciones">
-                <li><a href="/landing.html" class="header-link">Inicio</a></li>
-                <li><a href="/nosotros.html" class="header-link">Sobre Nosotros</a></li>
-                <li><a href="/contacto.html" class="header-link">Contacto</a></li>
-                <li><a href="/login.html" class="header-link-2">Ingresa</a></li>
-
-            </ul>
-        </div>
-    </header>
-
-
-<main>
-
-<div id="main-wrap">
-  
-
-    <div id="phone-sec"></div>
-    
-  
-      
-    <!--<a href="#"><i class="fa fa-youtube-square"></i></a>-->
-    
-  
-    <div id="logo"><img src=""/></div>
-    <div id="nav-one">
-     
-    </div>
-    
-  
-    <div id="about-us-text">Somos un grupo de estudiantes que desarrollamos la Aplicacion Web CalWallet que permite implementar la administracion de la cartera de descuentos 
-      de facturas/letras/recibos por honorarios, orientado a pequeñas o medianas empresas. Funcionar de forma indistinta para Soles 
-      y Dólares Americanos, así como para tasas nominales o efectivas.Ademas, calcula la Tasa de Coste Efectivo Anual (TCEA).La presente applicacion web fue desarrollada para el trabajo final de el curso Finanzas e Ingenieria Economica.
-    </div>
-    
-  
-    <div id="page-name-bar-heading">
-      
-      <p id="p-n-b-h">Sobre Nosotros </p>
-      <p id="p-n-b-h2">DESCRIPCION DE LA APP WEB</p>
-      <p id="p-n-b-h3">DESARROLADORES WEB</p>
-      
-      
-    </div>
-    
-  
-    <section class="timeline">
-    <div class="wrapper">
-      <div class="timeline__item timeline__item--0">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Dana Rebeca Contreras García</h2>
-          <p class="timeline__item__content__description">Mi nombre es Dana Rebeca Contreras García, tengo 18 años y me encuentro cursando el sexto ciclo de la carrera Ingeniería de Sistemas de Información en la Universidad Peruana de Ciencias Aplicadas (UPC). Cuento con experiencia en el lenguaje de programación C++ y C#. Me considero una persona creativa, honesta y responsable, además, me gusta trabajar tanto en equipo como individualmente .</p>
-        </div>
-      </div>
-      <div class="timeline__item timeline__item--1">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Enrique Alejandro Agreda Cutipa </h2>
-          <p class="timeline__item__content__description">Mi nombre es Enrique Alejandro Agreda Cutipa y tengo 19 años. Actualmente estudio la carrera de Ingeniería de Sistemas de Información en la Universidad Peruana de Ciencias Aplicadas (UPC). Soy una persona amable, sincera y me gusta ayudar a la gente. Tengo conocimientos en C++, C#, Java, javascript, CSS y HTML. </p>
-        </div>
-      </div>
-      <div class="timeline__item timeline__item--2">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Gabriel Velasquez Ortega</h2>
-          <p class="timeline__item__content__description">Mi nombre es Gabriel, tengo 19 años  y actualmente estudio la carrera de Ingeniería de Sistemas en la UPC. Me considero un estudiante creativo, perfeccionista y organizado. Tengo conocimientos intermedios/avanzados de diseño UI y experiencias de usuario (UX) en la plataforma Adobe XD. Asimismo, sé programar en C++, C#, Python, SQL..</p>
-        </div>
-      </div>
-      <div class="timeline__item timeline__item--3">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Fabricio Tovar</h2>
-          <p class="timeline__item__content__description">Mi nombre es Fabricio Tovar, tengo 21 años. Estoy cursando la carrera de Ingeniería de Sistemas de Información en la Universidad Peruana de Ciencias Aplicadas (UPC). Me considero una persona sincera, amable y con ganas de ayudar a mis compañeros. No soy muy afín a la programación pero trato de aprenderlo, así mismo considero tener otras aptitudes.</p>
-        </div>
-      </div>
-      <div class="timeline__item timeline__item--4">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Edson Paredes</h2>
-          <p class="timeline__item__content__description">Mi nombre es Edson Paredes y estudio Ingeniería de Sistemas de información en la Universidad Peruana de Ciencias Aplicadas (UPC) y actualmente me encuentro en el 6to ciclo. Desde siempre me ha gustado la forma en la cual las personas desarrollan sus sitios web y es por eso que estoy ansioso de poder compartir esta start-up.</p>
-        </div>
-      </div>
-      <div class="timeline__item timeline__item--5">
-        <div class="timeline__item__station"></div>
-        <div class="timeline__item__content">
-          <h2 class="timeline__item__content__date">Johana Campos</h2>
-          <p class="timeline__item__content__description">Mi nombre es Johana Campos, tengo 19 años. Estudio Ingeniería de sistemas de información  en la Universidad Peruana de Ciencias Aplicadas (UPC) y actualmente me encuentro en el 6to ciclo. Cuento con experiencia en los lenguajes de programación de Java, C++, c#. Asimismo, en experiencias de usuario (UX). Me considero una persona alegre, divertida y responsable. </p>
-        </div>
-      </div>
-    </section>
-  
-    
-    
-
-  
-  
-  
-  <div id="cpyright-txt"><p>Copyright @ 2017 CMT Panels. All Rights Reserved. </p></div>
-  
-
-  <div id="right-border-grey"></div>
-    
-    
-  </div>
-</div>
-</main>
+	<header>
+		<h1 class="logo-app"><img src="https://i.postimg.cc/QCnYtG2b/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+		<div class="navigation">
+			<ul class="secciones">
+				<li><a th:href="@{/home}" class="header-link">Inicio</a></li>
+				<li><a th:href="@{/home/nosotros}" class="header-link">Sobre Nosotros</a></li>
+				<li><a th:href="@{/home/contacto}" class="header-link">Contacto</a></li>
+				<li><a th:href="@{/login}" class="header-link-2">Ingresa</a></li>
+			</ul>
+		</div>
+	</header>
+	<main>
+		<div id="main-wrap">
+			<div id="phone-sec"></div>
+			<div id="logo">
+				<img src="" />
+			</div>
+			<div id="nav-one"></div>
+			<div id="about-us-text">Somos un grupo de estudiantes que
+				desarrollamos la Aplicacion Web CalWallet que permite implementar la
+				administracion de la cartera de descuentos de
+				facturas/letras/recibos por honorarios, orientado a pequeñas o
+				medianas empresas. Funcionar de forma indistinta para Soles y
+				Dólares Americanos, así como para tasas nominales o
+				efectivas.Ademas, calcula la Tasa de Coste Efectivo Anual (TCEA).La
+				presente applicacion web fue desarrollada para el trabajo final de
+				el curso Finanzas e Ingenieria Economica.</div>
+			<div id="page-name-bar-heading">
+				<p id="p-n-b-h">Sobre Nosotros</p>
+				<p id="p-n-b-h2">DESCRIPCION DE LA APP WEB</p>
+				<p id="p-n-b-h3">DESARROLADORES WEB</p>
+			</div>
+			<section class="timeline">
+				<div class="wrapper">
+					<div class="timeline__item timeline__item--0">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Dana Rebeca
+								Contreras García</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Dana Rebeca Contreras García, tengo 18 años y me encuentro
+								cursando el sexto ciclo de la carrera Ingeniería de Sistemas de
+								Información en la Universidad Peruana de Ciencias Aplicadas
+								(UPC). Cuento con experiencia en el lenguaje de programación C++
+								y C#. Me considero una persona creativa, honesta y responsable,
+								además, me gusta trabajar tanto en equipo como individualmente .</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--1">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Enrique Alejandro
+								Agreda Cutipa</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Enrique Alejandro Agreda Cutipa y tengo 19 años. Actualmente
+								estudio la carrera de Ingeniería de Sistemas de Información en
+								la Universidad Peruana de Ciencias Aplicadas (UPC). Soy una
+								persona amable, sincera y me gusta ayudar a la gente. Tengo
+								conocimientos en C++, C#, Java, javascript, CSS y HTML.</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--2">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Gabriel Velasquez
+								Ortega</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Gabriel, tengo 19 años y actualmente estudio la carrera de
+								Ingeniería de Sistemas en la UPC. Me considero un estudiante
+								creativo, perfeccionista y organizado. Tengo conocimientos
+								intermedios/avanzados de diseño UI y experiencias de usuario
+								(UX) en la plataforma Adobe XD. Asimismo, sé programar en C++,
+								C#, Python, SQL..</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--3">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Fabricio Tovar</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Fabricio Tovar, tengo 21 años. Estoy cursando la carrera de
+								Ingeniería de Sistemas de Información en la Universidad Peruana
+								de Ciencias Aplicadas (UPC). Me considero una persona sincera,
+								amable y con ganas de ayudar a mis compañeros. No soy muy afín a
+								la programación pero trato de aprenderlo, así mismo considero
+								tener otras aptitudes.</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--4">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Edson Paredes</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Edson Paredes y estudio Ingeniería de Sistemas de información en
+								la Universidad Peruana de Ciencias Aplicadas (UPC) y actualmente
+								me encuentro en el 6to ciclo. Desde siempre me ha gustado la
+								forma en la cual las personas desarrollan sus sitios web y es
+								por eso que estoy ansioso de poder compartir esta start-up.</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--5">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Johana Campos</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Johana Campos, tengo 19 años. Estudio Ingeniería de sistemas de
+								información en la Universidad Peruana de Ciencias Aplicadas
+								(UPC) y actualmente me encuentro en el 6to ciclo. Cuento con
+								experiencia en los lenguajes de programación de Java, C++, c#.
+								Asimismo, en experiencias de usuario (UX). Me considero una
+								persona alegre, divertida y responsable.</p>
+						</div>
+					</div>
+					<div class="timeline__item timeline__item--6">
+						<div class="timeline__item__station"></div>
+						<div class="timeline__item__content">
+							<h2 class="timeline__item__content__date">Natalie Huaman
+								Aparcana</h2>
+							<p class="timeline__item__content__description">Mi nombre es
+								Natalie Huaman Aparcana tengo 20 años y me encuentro cursando el
+								sexto ciclo de la carrera Ingeniería de Sistemas de Información
+								en la Universidad Peruana de Ciencias Aplicadas (UPC). Cuento
+								con experiencia en el lenguaje de programación C++ y C#. Me
+								considero una persona creativa, honesta y responsable, además,
+								me gusta trabajar tanto en equipo como individualmente .</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div id="right-border-grey"></div>
+		</div>
+	</main>
 </body>
-</html> 
+</html>

@@ -1,96 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:ital,wght@0,200..900;1,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
     <title>Inicio</title>
 </head>
 
 <body>
     <header>
-        <h1 class="logo-app"><img src="img/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
+        <h1 class="logo-app"><img src="https://i.postimg.cc/QCnYtG2b/logo.png" width="38px" height="35px" alt="logo"> CalWallet</h1>
         <div class="navigation">
             <ul class="secciones">
                 <li><a href="#" class="header-link">Inicio</a></li>
                 <li><a href="#" class="header-link">Sobre Nosotros</a></li>
                 <li><a href="#" class="header-link">Contacto</a></li>
             </ul>
+        </div>
     </header>
 
     <main>
         <div class="c-main-config">
-            
             <div class="p-config-izq">
-                <ul class="config-list">
-                    <br>
-                    <br>
-                    <li><i class="material-icons" style="color: white;">&#xe8b8;</i><a href="/config.html" class="config-link"> Configuracion</a></li>
-                    <br>
-                    <br>
-                    <li><i class="material-icons" style="color: white;">&#xe02f;</i><a href="/facturas.html" class="config-link"> Registros</a></li>
-                    <br>
-                    <br>
-                    <li><i class="material-icons" style="color: white;">&#xe02e;</i><a href="/tcea.html" class="config-link"> TCEA</a></li>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></br>
-
-                    <li><i class="material-icons" style="color: white;">&#xe879;</i><a href="#" class="config-link"> Cerrar Sesion</a></li>
-                    </ul>
-            </div>
+				<h1 style="color: white;" th:text="${UsernameHola}"></h1>
+				<ul class="config-list">
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8d3;</i><a
+						th:href="@{/inicio}" class="config-link"> Inicio</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe03b;</i><a
+						th:href="@{/inicio/listarFacturas}" class="config-link"> Listas</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe02f;</i><a
+						th:href="@{/inicio/registrarFactura}" class="config-link"> Registros</a></li>
+					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe8b8;</i><a 
+						th:href="@{/inicio/configuracion}" class="config-link"> Configuración</a></li>
+					<br> <br>
+					<li><i class="material-icons" style="color: white;">&#xe879;</i><a 
+						th:href="@{/inicio/cerrarSesion}" class="config-link"> Cerrar Sesión</a></li>
+				</ul>
+			</div>
 
             <div class="p-config-der">
                 <div class="b-datos">
-                    <a href="/facturas.html"> <button type="submit" id="btn-facturas">Facturas</button></a>
-                    <a href="/letras.html"> <button type="submit" id="btn-letras">Letras</button></a>
-                    <a href="/recibos.html"> <button type="submit" id="btn-recibo">Recibos por honorario</button></a>
-                </div>
+					<a th:href="@{/inicio/registrarFactura}" id="btn-facturas">Facturas</a>
+					<a th:href="@{/inicio/registrarLetra}" id="btn-letras">Letras</a>
+					<a th:href="@{/inicio/registrarRecibo}" id="btn-recibo">Recibo por honorarios</a> 
+				</div>
                 <div class="c-letras">
-
-                    <h9 class="h9-l">Letra de cambio</h9>
-                    <br>
+                <form class="registro-cont" th:action="@{/inicio/crearLetra}" method="post" th:object="${letra}">
+                    <h6 class="h9-l">Letra de cambio</h6>
+                    <small class="h9-l" th:if="${#fields.hasErrors('FechaPagarLetra')}" th:errors="*{FechaPagarLetra}"></small>
                     <br>
                     <div class="help1">
                         <div class="help2">
-                            <label id="l-valor" for="valor">VALOR</label>
+                            <label id="l-valor" for="valor">Importe</label>
                             <br>
-                            <br>
-                            <label><input type="text" id="i-valor" placeholder="  S/."></label>
+                            <label th:if="${TipoMoneda == 'Soles'}">S/.</label>
+							<label th:if="${TipoMoneda != 'Soles'}">$</label>
+                            <input type="number" id="i-valor" th:field="*{ImporteLetra}" required>
                             <br>
                             <br>
                         </div>
                         <div class="help3">
                             <label id="l-fecha-l" for="date">Fecha a pagar</label>
                             <br>
+                            <input type="date" id="i-fecha-l" th:field="*{FechaPagarLetra}" required>
                             <br>
-                            <input type="date" id="i-fecha-l">
-                            <br>
-                            <br>
+                        	<br>
                         </div>
                     </div>
                     <div class="help1">
                         <div class="help2">
-                            <label id="l-interes" for="interes">Interes</label>
+                            <label id="l-interes" for="interes">Interes anual</label>
                             <br>
-                            <br>
-                            <input type="text" id="i-interes">
+                            <input type="number" id="i-interes" th:field="*{InteresAnual}" required>
+                            <label>%</label>
                             <br>
                             <br>
                         </div>
                         <div class="help3">
                             <label id="l-mora" for="mora">Mora anual</label>
                             <br>
-                            <br>
-                            <input type="text" id="i-mora">
-                            <br>
+                            <input type="number" id="i-mora" th:field="*{MoraAnual}" required>
+                            <label>%</label>
                         </div>
                     </div>
-                    <br>
+                    <label id="l-perio" for="perio">Periodo de días</label>
+					<br>
+					<input type="number" id="i-perio" th:field="*{Periodo}" required>
+					<br> <br>
                     <button type="submit" id="btn-registro">Guardar letra</button>
+                </form>
                 </div>
             </div>
         </div>                
     </main>
 </body>
+</html>

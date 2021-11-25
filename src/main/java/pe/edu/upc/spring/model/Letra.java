@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,16 +31,26 @@ public class Letra implements Serializable {
 	@Column(name="ImporteLetra", nullable=false)
 	private double ImporteLetra;
 	
+	//@Future(message = "No se puede insertar esa fecha")
 	@Temporal(TemporalType.DATE)
 	@Column(name ="FechaPagarLetra")
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date FechaPagarLetra;
 	
 	@Column(name="InteresAnual", length = 10, nullable=false)
-	private float InteresAnual;
+	private double InteresAnual;
 	
 	@Column(name="MoraAnual", length = 10, nullable=false)
-	private float MoraAnual;
+	private double MoraAnual;
+	
+	@Column(name = "Periodo",nullable = false)
+	private int Periodo;
+	
+	@Column(name = "AlDescuento",nullable = false)
+	private double AlDescuento;
+	
+	@Column(name="LTCEA", length=10, nullable=false)
+	private double LTCEA;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="idUsuario", nullable=false)
@@ -47,6 +58,21 @@ public class Letra implements Serializable {
 
 	public Letra() {
 		super();
+	}
+
+	public Letra(int idLetra, double importeLetra,
+			@Future(message = "No se puede insertar esa fecha") Date fechaPagarLetra, double interesAnual,
+			double moraAnual, int periodo, double alDescuento, double lTCEA, Usuario usuario) {
+		super();
+		this.idLetra = idLetra;
+		ImporteLetra = importeLetra;
+		FechaPagarLetra = fechaPagarLetra;
+		InteresAnual = interesAnual;
+		MoraAnual = moraAnual;
+		Periodo = periodo;
+		AlDescuento = alDescuento;
+		LTCEA = lTCEA;
+		this.usuario = usuario;
 	}
 
 	public int getIdLetra() {
@@ -73,16 +99,20 @@ public class Letra implements Serializable {
 		FechaPagarLetra = fechaPagarLetra;
 	}
 
-	public float getInteresAnual() {
+	public double getInteresAnual() {
 		return InteresAnual;
 	}
 
-	public void setInteresAnual(float interesAnual) {
+	public void setInteresAnual(double interesAnual) {
 		InteresAnual = interesAnual;
 	}
 
-	public float getMoraAnual() {
+	public double getMoraAnual() {
 		return MoraAnual;
+	}
+
+	public void setMoraAnual(double moraAnual) {
+		MoraAnual = moraAnual;
 	}
 
 	public void setMoraAnual(float moraAnual) {
@@ -96,5 +126,28 @@ public class Letra implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public int getPeriodo() {
+		return Periodo;
+	}
+
+	public void setPeriodo(int periodo) {
+		Periodo = periodo;
+	}
+
+	public double getAlDescuento() {
+		return AlDescuento;
+	}
+
+	public void setAlDescuento(double alDescuento) {
+		AlDescuento = alDescuento;
+	}
+
+	public double getLTCEA() {
+		return LTCEA;
+	}
+
+	public void setLTCEA(double lTCEA) {
+		LTCEA = lTCEA;
+	}
 }

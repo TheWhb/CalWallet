@@ -1,7 +1,10 @@
 package pe.edu.upc.spring.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,81 +14,114 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ReciboPorHonorario")
-public class ReciboPorHonorario {
+public class ReciboPorHonorario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int idReciboPorHonorario;
 	
-	@Column(name ="total", nullable=false)
-	private double total;
+	@Column(name ="Total", nullable=false)
+	private double Total;
 	
-	@Column(name ="retencion", nullable=false)
-	private double retencion;
+	@Column(name ="Retencion", nullable=false)
+	private double Retencion;
 	
-	@Column(name ="total_neto", nullable=false)
-	private double total_neto;
+	@Column(name ="Total_neto", nullable=false)
+	private double Total_neto;
 	
-	@ManyToOne
+	@Column(name = "Periodo",nullable = false)
+	private int Periodo;
+	
+	@Column(name = "AlDescuento",nullable = false)
+	private double AlDescuento;
+	
+	@Column(name="RTCEA", length=10, nullable=false)
+	private double RTCEA;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuario", nullable = false)
-	private Usuario idUsuario;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public double getTotal() {
-		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
-	public double getRetencion() {
-		return retencion;
-	}
-
-	public void setRetencion(double retencion) {
-		this.retencion = retencion;
-	}
-
-	public double getTotal_neto() {
-		return total_neto;
-	}
-
-	public void setTotal_neto(double total_neto) {
-		this.total_neto = total_neto;
-	}
-
-	public Usuario getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public ReciboPorHonorario(Integer id, double total, double retencion, double total_neto, Usuario idUsuario) {
-		super();
-		this.id = id;
-		this.total = total;
-		this.retencion = retencion;
-		this.total_neto = total_neto;
-		this.idUsuario = idUsuario;
-	}
+	private Usuario usuario;
 
 	public ReciboPorHonorario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
+	public ReciboPorHonorario(int idReciboPorHonorario, double total, double retencion, double total_neto, int periodo,
+			double alDescuento, double rTCEA, Usuario usuario) {
+		super();
+		this.idReciboPorHonorario = idReciboPorHonorario;
+		Total = total;
+		Retencion = retencion;
+		Total_neto = total_neto;
+		Periodo = periodo;
+		AlDescuento = alDescuento;
+		RTCEA = rTCEA;
+		this.usuario = usuario;
+	}
 
-	
-	
-	
+	public int getIdReciboPorHonorario() {
+		return idReciboPorHonorario;
+	}
+
+	public void setIdReciboPorHonorario(int idReciboPorHonorario) {
+		this.idReciboPorHonorario = idReciboPorHonorario;
+	}
+
+	public double getTotal() {
+		return Total;
+	}
+
+	public void setTotal(double total) {
+		Total = total;
+	}
+
+	public double getRetencion() {
+		return Retencion;
+	}
+
+	public void setRetencion(double retencion) {
+		Retencion = retencion;
+	}
+
+	public double getTotal_neto() {
+		return Total_neto;
+	}
+
+	public void setTotal_neto(double total_neto) {
+		Total_neto = total_neto;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public int getPeriodo() {
+		return Periodo;
+	}
+
+	public void setPeriodo(int periodo) {
+		Periodo = periodo;
+	}
+
+	public double getAlDescuento() {
+		return AlDescuento;
+	}
+
+	public void setAlDescuento(double alDescuento) {
+		AlDescuento = alDescuento;
+	}
+
+	public double getRTCEA() {
+		return RTCEA;
+	}
+
+	public void setRTCEA(double rTCEA) {
+		RTCEA = rTCEA;
+	}
 }

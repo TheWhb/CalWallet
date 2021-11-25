@@ -27,7 +27,7 @@ public class Usuario implements Serializable{
 	private String Contraseña;
 	
 	@Column(name="Email", length=20, nullable=false)
-	private int Email;
+	private String Email;
 	
 	@Column(name="RUC", length=11, nullable=false)
 	private String RUC;
@@ -38,16 +38,15 @@ public class Usuario implements Serializable{
 	@Column(name="TipoTasa", length=10, nullable=false)
 	private String TipoTasa;
 	
-	@Column(name="UTCEA", length=10, nullable=false)
-	private float UTCEA;
+	@Column(name="TasaInteres", length=10, nullable=false)
+	private double TasaInteres;
 
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int idUsuario, String username, String contraseña, int email, String rUC, String tipo_Moneda,
-			String tipoTasa, float uTCEA) {
+	public Usuario(int idUsuario, String username, String contraseña, String email, String rUC, String tipo_Moneda,
+			String tipoTasa, double tasaInteres) {
 		super();
 		this.idUsuario = idUsuario;
 		Username = username;
@@ -56,7 +55,7 @@ public class Usuario implements Serializable{
 		RUC = rUC;
 		Tipo_Moneda = tipo_Moneda;
 		TipoTasa = tipoTasa;
-		UTCEA = uTCEA;
+		TasaInteres = tasaInteres;
 	}
 
 	public int getIdUsuario() {
@@ -83,11 +82,11 @@ public class Usuario implements Serializable{
 		Contraseña = contraseña;
 	}
 
-	public int getEmail() {
+	public String getEmail() {
 		return Email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		Email = email;
 	}
 
@@ -115,14 +114,11 @@ public class Usuario implements Serializable{
 		TipoTasa = tipoTasa;
 	}
 
-	public float getUTCEA() {
-		return UTCEA;
+	public double getTasaInteres() {
+		return TasaInteres;
 	}
 
-	public void setUTCEA(float uTCEA) {
-		UTCEA = uTCEA;
-	}
-	
-	
-	
+	public void setTasaInteres(double tasaInteres) {
+		TasaInteres = tasaInteres;
+	}	
 }
